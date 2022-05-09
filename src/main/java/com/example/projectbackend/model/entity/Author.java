@@ -1,7 +1,9 @@
 package com.example.projectbackend.model.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "author")
@@ -17,20 +19,20 @@ public class Author {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "author")
-    private List<Book> books;
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private Set<Book> books = new HashSet<>();
 
     public Author() {
     }
 
-    public Author(int id, String firstName, String lastName, List<Book> books) {
+    public Author(int id, String firstName, String lastName, Set<Book> books) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.books = books;
     }
 
-    public Author(String firstName, String lastName, List<Book> books) {
+    public Author(String firstName, String lastName, Set<Book> books) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.books = books;
@@ -60,11 +62,11 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public List<Book> getBooks() {
+    public Set<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(Set<Book> books) {
         this.books = books;
     }
 }

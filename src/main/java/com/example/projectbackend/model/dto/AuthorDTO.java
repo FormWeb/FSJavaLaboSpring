@@ -85,4 +85,14 @@ public class AuthorDTO {
     public void setBooks(List<BookDTO> books) {
         this.books = books;
     }
+
+    @Override
+    public String toString() {
+        return "AuthorDTO{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", books=" + books +
+                '}';
+    }
 }
