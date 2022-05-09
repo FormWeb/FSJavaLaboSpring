@@ -34,8 +34,8 @@ public class ProjectbackendApplication implements CommandLineRunner {
 
 		System.out.println("\n Find by message : ");
 
-		Post postFoundByMessage = postRepository.findByMessage("Hi");
-		System.out.println(postFoundByMessage.getId());
+//		Post postFoundByMessage = postRepository.findByMessage("Hi");
+//		System.out.println(postFoundByMessage.getId());
 
 		System.out.println("\n Find long posts : ");
 
