@@ -61,6 +61,7 @@ public class ProjectbackendApplication implements CommandLineRunner {
 		// 2. Utilisation du mapper (sera fait dans les services)
 
 		// Pour insérer une donnée
+
 		// On récupère un AuthorDTO
 		AuthorDTO authorDTO = new AuthorDTO("Pierre", "Bourdieu");
 
@@ -69,6 +70,7 @@ public class ProjectbackendApplication implements CommandLineRunner {
 
 		// On le sauve via le repository
 		authorRepository.save(newAuthor);
+
 
 		// Pour récupérer une donnée
 		Author authorToFind = authorRepository.findById(1).orElse(null);
