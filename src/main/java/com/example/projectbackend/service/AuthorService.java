@@ -2,6 +2,7 @@ package com.example.projectbackend.service;
 
 import com.example.projectbackend.mapper.AuthorMapper;
 import com.example.projectbackend.model.dto.AuthorDTO;
+import com.example.projectbackend.model.entity.Author;
 import com.example.projectbackend.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,23 @@ public class AuthorService {
     public String deleteAuthor(int id) {
         authorRepository.deleteById(id);
         return "Author deleted";
+    }
+
+    public AuthorDTO updateAuthor(AuthorDTO authorDTO) {
+        if (authorDTO.getId() > 0) {
+            Author current = authorRepository.findById(authorDTO.getId()).orElse(null);
+            if (authorDTO.getFirstName() != null) {
+                current.setFirstName(authorDTO.getFirstName());
+            }
+
+            if (authorDTO.getLastName() != null) {
+                current.setLastName(authorDTO.getLastName());
+            }
+            return authorMapper.toDto(authorRepository.save(current));
+        }
+        else {
+            return null;
+        }
+
     }
 }
